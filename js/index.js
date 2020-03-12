@@ -34,11 +34,13 @@ mouseOver3.addEventListener("mouseover", event => {
 mouseOver3.addEventListener("mouseout", event => {
   event.target.style.transform = "scaleX(1)";
 });
-/////////////////ONLOAD EVENT....NOT WORKING/////////////////////
-const whenLoad = document.querySelector("body");
+/////////////////mouseleave event/////////////////////
+const pageLoad = document.querySelector(".intro");
 
-whenLoad.addEventListener("load", event => {
-  event.target.style.backgroundColor = "red";
+pageLoad.addEventListener("mouseleave", (event) => {
+  event.target.style.backgroundColor = "mediumaquamarine";
+  event.target.style.color = "red";
+
 });
 
 //////click event 1//////////////////////////
