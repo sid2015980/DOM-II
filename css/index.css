@@ -265,6 +265,7 @@ img {
 }
 .home .content-section .img-content img {
   border-radius: 10px;
+  transition: all 2s ease-in-out;
 }
 @media (max-width: 500px) {
   .home .content-section .img-content img {
@@ -304,6 +305,7 @@ img {
 }
 .home .content-destination img {
   border-radius: 10px;
+  transition: all 2s ease-in-out;
 }
 .home .content-pick {
   padding-top: 30px;
