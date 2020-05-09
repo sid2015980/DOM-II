@@ -1,18 +1,30 @@
-////////mouseover 1///////////////////////
-const mouseOver = document.querySelector(".nav");
+//////////////scroll event//////////////////////
+window.addEventListener("scroll", () => {
+  const bodySelector = document.querySelector("body")
+  const headerSelector = document.querySelector(".logo-heading")
+  const scrolled = document.documentElement.scrollHeight - window.innerHeight
+  const scrollable = window.scrollY
 
-mouseOver.addEventListener(
-  "mouseover",
-  event => {
+  if (Math.ceil(scrolled) === scrollable){
+    bodySelector.style.backgroundColor = "black"
+    bodySelector.style.color = "white"
+    headerSelector.style.color = "black"
+  }
+})
+
+////////mousedown---mouseup///////////////////////
+const mouseDown = document.querySelector(".nav");
+
+mouseDown.addEventListener("mousedown", event => {
     event.target.style.color = "gold";
-
-    setTimeout(function() {
-      event.target.style.color = "";
-    }, 500);
   },
-  false
+
+  mouseDown.addEventListener("mouseup", event => {
+    event.target.style.color = "black";
+  })
 );
-///////////////////2 mouse over events////////////////////////////////
+
+///////////////////mouseover---mouseout////////////////////////////////
 const mouseOver2 = document.querySelector(".img-content img");
 
 mouseOver2.addEventListener("mouseover", event => {
@@ -23,7 +35,7 @@ mouseOver2.addEventListener("mouseover", event => {
 mouseOver2.addEventListener("mouseout", event => {
   event.target.src = "img/adventure.jpg";
 });
-////////////////////////MOuse Over3/////////////////////////////
+////////////////////////mouseover---mouseout2/////////////////////////////
 
 const mouseOver3 = document.querySelector(".img-fluid");
 
@@ -35,34 +47,42 @@ mouseOver3.addEventListener("mouseout", event => {
   event.target.style.transform = "scaleX(1)";
 });
 /////////////////mouseleave event/////////////////////
-const pageLoad = document.querySelector(".intro");
+const mouseLeave = document.querySelector(".intro");
 
-pageLoad.addEventListener("mouseleave", (event) => {
+mouseLeave.addEventListener("mouseleave", (event) => {
   event.target.style.backgroundColor = "mediumaquamarine";
   event.target.style.color = "red";
 
 });
 
-//////click event 1//////////////////////////
-const whenClick = document.querySelector(".content-destination img");
+//////resize event//////////////////////////
+const whenSize = document.querySelector(".content-destination img");
 
-whenClick.addEventListener("click", event => {
-    event.target.src = "/img/boatDocking.jpg";
+window.addEventListener("resize", event => {
+  if(window.innerWidth <= 1000){
+  whenSize.src = "/img/boatDocking.jpg";
+  }else{
+    whenSize.src = '/img/destination.jpg'
+  }
 
-    setTimeout(function() {
-        event.target.src = "img/destination.jpg";
-      }, 2000);
+    // setTimeout(function() {
+    //     event.target.src = "img/destination.jpg";
+    //   }, 2000);
 });
-/////////////////click event 2////////////////////////////
-const whenClick2 = document.querySelector(".btn");
 
-whenClick2.addEventListener("click", event => {
-    event.target.style.color = "red";
+/////////////////click event////////////////////////////
+const whenClick = document.querySelectorAll(".btn");
 
-    setTimeout(function() {
-        event.target.style.color = "";
-      }, 2000);
-});
+for (const button  of whenClick) {
+  button.addEventListener("click", event => {
+    event.target.style.backgroundColor = "red"
+
+    setTimeout(function () {
+      event.target.style.backgroundColor = "";
+    }, 2000);
+  });
+}
+
 /////////////double click////////////////
 const doubleClick = document.querySelector(".footer");
 
@@ -70,7 +90,7 @@ doubleClick.addEventListener("dblclick", event => {
     event.target.style.backgroundColor = "mediumaquamarine";
     event.target.style.color = "red";
 });
-/////////scroll wheel changes bus image
+/////////wheel event///////
 function zoom(event) {
   event.preventDefault();
   scale += event.deltaY * -0.01;
@@ -81,7 +101,6 @@ function zoom(event) {
 let scale = 1;
 const el = document.querySelector(".intro img");
 el.onwheel = zoom;
-/////////////////////////////////////
 
 //////stop links from loading on click
 document.querySelector("header").addEventListener("click", navLinks);
