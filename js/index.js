@@ -1,14 +1,48 @@
+addEventListener("keydown", (e) => {
+  if (e.keyCode === 118 || e.keyCode === 116) {
+    alert("You can't refresh by using the F5 key!!!");}
+  e.preventDefault();
+});
+
+addEventListener("keydown", (e) => {
+  const header = document.querySelector("header");
+  const nav = document.querySelectorAll(".nav-link");
+
+  if (e.key === "a" || e.key === "b") {
+    alert("Can't press those either!!!!!!!!!!!!");
+    header.style.backgroundColor = "black";
+    header.style.color = "white";
+
+    for (const aTags of nav) {
+      aTags.style.color = "white";
+
+      setTimeout(function () {
+        aTags.style.color = "";
+        header.style.backgroundColor = "";
+        header.style.color = "";
+      }, 2000);
+    }
+  }
+});
+
+
 //////////////scroll event//////////////////////
 window.addEventListener("scroll", () => {
   const bodySelector = document.querySelector("body")
   const headerSelector = document.querySelector(".logo-heading")
   const scrolled = document.documentElement.scrollHeight - window.innerHeight
   const scrollable = window.scrollY
+  const top = document.documentElement.scrollHeight + window.innerHeight
 
-  if (Math.ceil(scrolled) === scrollable){
+  if (Math.ceil(scrolled) !== scrollable){
     bodySelector.style.backgroundColor = "black"
     bodySelector.style.color = "white"
     headerSelector.style.color = "black"
+
+  }else{(Math.ceil(top) === scrollable)
+    bodySelector.style.backgroundColor = "green"
+    bodySelector.style.color = ""
+    headerSelector.style.color = ""
   }
 })
 
